@@ -16,15 +16,22 @@ app.get('/Users', function(req,res){
 		res.json(Users);
 	});
 });
+
+//inserting a user into the database..
 app.post('/Users', function(req,res){
-	users.Users.insert(req.body, function(err, Users){
-		if(err) {
-			res.send(err);
+	//code to check whether a given MRN is in the db or not.. reject the insertion if so
+	var mrn = req.body.MRN;
+	users.Users.findOne({"MRN": mrn}, function(err, user){
+		if(user != null) {
+			res.json("MRN already used.. please choose a different one");
 		}
 		else {
-			console.log(Users);
-			console.log("Inserting a user into the database..");
-			res.json("User Successfully Uploaded!");
+			users.Users.insert(req.body, function(err, user) {
+				console.log(user);
+				console.log("Inserting a user into the database..");
+				res.json("User Successfully Uploaded!");
+
+			});
 		}
 	});
 });
