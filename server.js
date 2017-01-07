@@ -10,12 +10,6 @@ var recordings = mongojs('mongodb://zoriak:test@ds111718.mlab.com:11718/zoriakdb
 app.use(bodyParser.json());
 var ObjectId = mongojs.ObjectId;
 
-/* 
-we should make the client work and pull from this code style, every time a user creates a new profile it will create
-	a new user and assign the given id in the local app. We will use all the locally saved id's to update the database real time.
-	Everytime the user creates a new profile, it will create a new one here..same for creations and deletions of recordings..
-*/
-
 //handles all functionality for users..
 app.get('/Users', function(req,res){
 	users.Users.find(function(err,Users){
