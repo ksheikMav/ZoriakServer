@@ -84,4 +84,4 @@ app.delete('/Recordings/:id', function(req,res) {
 
 
 console.log('Running Server...');
-app.listen(3000);
+app.listen(process.env.PORT || 5000)
