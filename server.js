@@ -98,14 +98,14 @@ app.get('*', function(req,res){
 //used for testing neda's recordings...
 app.post('/iran', function(req, res) {
 	console.log("we're here..");
+	console.log(req.body);
 	iranianRecordings.iran.insert(req.body, function(err, iran) {
 		console.log("incoming recording from iran..");
-		res.json("Recording Sucessfully Uploaded..");
-
+		res.json("Iranian Recording Sucessfully Uploaded..");
 	})
 
 });
-app.get(('/iranianUploads'), function(req,res) {
+app.get(('/iran'), function(req,res) {
 	iranianRecordings.iran.find(function(err, neda) {
 		res.json(neda);
 
