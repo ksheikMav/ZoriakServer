@@ -89,15 +89,8 @@ app.delete('/Recordings/:id', function(req,res) {
 
 
 });
-app.get('*', function(req,res){
-	res.sendStatus(404);
-
-});
-
-
 //used for testing neda's recordings...
 app.post('/iran', function(req, res) {
-	console.log("we're here..");
 	console.log(req.body);
 	iranianRecordings.iran.insert(req.body, function(err, iran) {
 		console.log("incoming recording from iran..");
@@ -105,13 +98,20 @@ app.post('/iran', function(req, res) {
 	})
 
 });
-app.get(('/iran'), function(req,res) {
+app.get('/iran', function(req,res) {
 	iranianRecordings.iran.find(function(err, neda) {
 		res.json(neda);
 
 	});
 
 });
+app.get('*', function(req,res){
+	res.sendStatus(404);
+
+});
+
+
+
 
 console.log('Running Server...');
 app.listen(process.env.PORT || 5000)
