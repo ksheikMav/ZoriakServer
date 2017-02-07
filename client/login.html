@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="login.css" rel="stylesheet">
+	<meta name="Zoriak" content="">
+
+
+	<title>
+		Cardio Recorder Database..
+
+	</title>
+
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:50; padding:50; }
+        #map { position:absolute; top:50; bottom:50; width:100%; }
+    </style>
+</head>
+<body>
+
+
+	<h1 align = "center">
+		Zoriak Admin Page
+	</h1>
+
+
+	<div>
+		<form class = "form" method= "post" action = "#">
+    		<label>Username</label>
+    		<input type="text" name="username" id = "username">
+			<label>Password</label>
+    		<input type="password" id="password" name="password">
+    	 <input type="submit" name="login" id="login" value="Login">
+ 		 </form>
+</div>
+
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v2.2.0/mapbox-gl-directions.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v2.2.0/mapbox-gl-directions.css' type='text/css' />
+<div id='map'></div>
+
+
+
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

@@ -6,9 +6,17 @@ var bodyParser = require('body-parser');
 var users = mongojs('mongodb://zoriak:test@ds111718.mlab.com:11718/zoriakdb', ['Users'], ['Recordings']);
 //recordings documents
 var recordings = mongojs('mongodb://zoriak:test@ds111718.mlab.com:11718/zoriakdb', ['Recordings']);
+var iranianRecordings = mongojs('mongodb://zoriak:test@ds111718.mlab.com:11718/zoriakdb', ['iran'] )
 
 app.use(bodyParser.json());
 var ObjectId = mongojs.ObjectId;
+
+//route to index page..
+app.get('/', function(req,res) {
+	res.sendFile('login.html', { root: './client/' });
+
+});
+
 
 //handles all functionality for users..
 app.get('/Users', function(req,res){
@@ -81,7 +89,29 @@ app.delete('/Recordings/:id', function(req,res) {
 
 
 });
+app.get('*', function(req,res){
+	res.sendStatus(404);
 
+});
+
+
+//used for testing neda's recordings...
+app.post('/iran', function(req, res) {
+	console.log("we're here..");
+	iranianRecordings.iran.insert(req.body, function(err, iran) {
+		console.log("incoming recording from iran..");
+		res.json("Recording Sucessfully Uploaded..");
+
+	})
+
+});
+app.get(('/iranianUploads'), function(req,res) {
+	iranianRecordings.iran.find(function(err, neda) {
+		res.json(neda);
+
+	});
+
+});
 
 console.log('Running Server...');
 app.listen(process.env.PORT || 5000)
