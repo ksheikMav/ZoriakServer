@@ -36,7 +36,7 @@ app.post('/Users', function(req,res){
 		else {
 			users.Users.insert(req.body, function(err, user) {
 				console.log("Inserting a user into the database..");
-				res.json(user._id);
+				res.json({"id" : user._id});
 
 			});
 		}
