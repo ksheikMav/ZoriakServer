@@ -32,6 +32,7 @@ app.post('/Users', function(req,res){
 	users.Users.findOne({"MRN": mrn}, function(err, user){
 		if(user != null) {
 			res.json("MRN already used.. please choose a different one");
+			res.send(404);
 		}
 		else {
 			users.Users.insert(req.body, function(err, user) {
