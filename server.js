@@ -21,7 +21,7 @@ var ObjectId = mongojs.ObjectId;
 //route to index page..
 app.get('/', function(req,res) {
 	// res.sendFile('login.html', { root: './client/' });
-	res.send("The Zoriak Server and Database");
+	res.send("The Zoriak Server and Database.");
 
 });
 
