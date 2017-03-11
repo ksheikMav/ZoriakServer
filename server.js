@@ -54,6 +54,9 @@ app.post('/Users', function(req,res){
 app.get('/Users/:id', function(req,res){
   var id = req.params.id;
 	recordings.Recordings.find({"user-id": id}, function(err, recordings){
+		if(err) {
+			res.send(err);
+		}
 		if(recordings.length == 0) {
 			res.json("No Recordings Found..")
 		}
