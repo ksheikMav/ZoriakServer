@@ -144,6 +144,7 @@ app.delete('/Recordings/:id', function(req,res) {
 });
 //used for testing recordings coming from iran.. implemented in iphone app currently
 app.post('/iran', function(req, res) {
+	//TODO get rid of this in client side..
 	console.log(req.body);
 	iranianRecordings.iran.insert(req.body, function(err, iran) {
 		console.log("incoming recording from iran..");
